@@ -3,13 +3,23 @@ package gandalf;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+
 /**
  * Main class for the Gandalf chatbot
  */
-public class Gandalf {
+public class Gandalf extends Application {
     private Storage storage;
     private TaskList tasks;
     private Ui ui;
+
+    public Gandalf() {
+
+    }
 
     /**
      * Takes in two paths as it uses two files for its store/load feature. One file is for loading any existing lists,
@@ -104,5 +114,15 @@ public class Gandalf {
 
     public static void main(String[] args) {
         new Gandalf("docs/gandalfMeta.txt", "docs/gandalfRead.txt").run();
+    }
+
+    @Override
+    public void start(Stage stage) {
+        Label helloWorld = new Label("Hello World!"); // Creating a new Label control
+        Font font = new Font("Arial", 50);
+        helloWorld.setFont(font);
+        Scene scene = new Scene(helloWorld); // Setting the scene to be our Label
+        stage.setScene(scene); // Setting the stage to show our screen
+        stage.show(); // Render the stage.
     }
 }
